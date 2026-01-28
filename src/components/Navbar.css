@@ -1,0 +1,305 @@
+/* =========================================
+   BRAND HEART HEADER ARCHITECTURE
+   ========================================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1.5rem 0;
+    /* Soft Glass "Frame" Effect */
+    background-color: hsl(var(--surface) / 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    /* Ultra subtle boundary */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    /* Deep, soft depth */
+
+    /* Entrance Animation */
+    animation: header-enter 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes header-enter {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LOGO: The Static Anchor */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    color: hsl(var(--primary));
+    /* Visual Isolation */
+    padding-right: 2rem;
+    position: relative;
+    z-index: 2;
+    /* Sits above */
+}
+
+.nav-logo img {
+    height: 80px;
+    width: auto;
+    /* NO ANIMATION on load - Confident & Static */
+    display: block;
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 1.25rem 0;
+    }
+
+    .nav-logo img {
+        height: 64px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 0;
+    }
+
+    .nav-logo img {
+        height: 48px;
+    }
+}
+
+.nav-toggle {
+    display: none;
+    cursor: pointer;
+    color: hsl(var(--text-main));
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 3.5rem;
+    /* Increased spacing to let logo breathe */
+}
+
+.nav-link {
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: hsl(var(--text-muted));
+    /* Defer to logo */
+    position: relative;
+    transition: color 0.25s ease-in-out;
+    opacity: 0;
+    /* Start hidden for stagger */
+    animation: nav-fade-in 0.8s ease forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes nav-fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Hover & Active States (Desktop Focused) */
+@media (min-width: 769px) {
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -2px;
+        /* Closer to text */
+        left: 0;
+        background-color: hsl(var(--primary));
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        opacity: 0.8;
+        /* Subtle */
+    }
+
+    .nav-link:hover {
+        color: hsl(var(--text-main));
+        /* Darken instead of color shift */
+    }
+
+    .nav-link:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    .nav-link.active {
+        color: hsl(var(--text-main));
+        font-weight: 600;
+    }
+
+    .nav-link.active::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    /* LOGO: No Hover Movement - Absolute Authority */
+    .nav-logo {
+        display: inline-block;
+        /* No transform or opacity shift */
+    }
+}
+
+/* Fallback/Mobile Active State (Simple Color) */
+@media (max-width: 768px) {
+
+    .nav-link:hover,
+    .nav-link.active {
+        color: hsl(var(--primary));
+    }
+}
+
+/* Dropdown Styles */
+.nav-item.dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background-color: hsl(var(--surface));
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    box-shadow: var(--shadow-lg);
+    /* Deeper shadow for float */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 1000;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: hsl(var(--text-muted));
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-item:hover,
+.dropdown-item.active {
+    background-color: hsl(var(--primary) / 0.05);
+    color: hsl(var(--primary));
+}
+
+/* Open State (Hover/Class) */
+.nav-item.dropdown:hover .dropdown-menu,
+.nav-item.dropdown.open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: hsl(var(--surface));
+        padding: 1rem;
+        gap: 0;
+        border-bottom: 1px solid hsl(var(--border));
+        transform: translateY(-150%);
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        z-index: -1;
+        align-items: flex-start;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        box-shadow: var(--shadow-md);
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0.75rem 0;
+    }
+
+    .nav-item.dropdown {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        padding-left: 1.5rem;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: none;
+    }
+
+    .nav-item.dropdown.open .dropdown-menu {
+        display: block;
+        animation: slideDown 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .dropdown-item {
+        padding: 0.75rem 0;
+        border-left: 2px solid hsl(var(--border));
+        padding-left: 1rem;
+    }
+
+    .dropdown-icon {
+        transition: transform 0.3s ease;
+    }
+
+    .nav-item.dropdown.open .dropdown-icon {
+        transform: rotate(180deg);
+    }
+}
