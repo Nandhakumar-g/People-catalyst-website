@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="container text-center">
                 <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
                     <img
-                        src="/images/logo-colored.png"
+                        src="/images/logo-white.png"
                         alt="The People Catalyst"
                         style={{ height: '60px', width: 'auto' }}
                     />

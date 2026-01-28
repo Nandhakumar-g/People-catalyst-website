@@ -44,10 +44,16 @@ const Navbar = () => {
         <nav className="navbar bg-surface shadow-sm">
             <div className="container nav-container">
                 <Link to="/" className="nav-logo">
-                    <img
-                        src="/images/logo-colored.png"
-                        alt="The People Catalyst"
-                    />
+                    <div className="logo-icon-crop">
+                        <img
+                            src="/images/logo-colored.png"
+                            alt="The People Catalyst"
+                        />
+                    </div>
+                    <div className="logo-text-group">
+                        <span className="brand-name">The People Catalyst</span>
+                        <span className="brand-tagline">Your Next-Door Training Partner</span>
+                    </div>
                 </Link>
 
                 <div className="nav-toggle" onClick={toggleMenu}>
