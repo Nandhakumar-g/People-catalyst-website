@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, MessageCircle } from 'lucide-react';
+import { ArrowRight, MessageCircle, Mail, Phone } from 'lucide-react';
 
 const Contact = () => {
     return (
@@ -13,7 +13,37 @@ const Contact = () => {
 
             <section className="section bg-alt text-center reveal">
                 <div className="container">
-                    <div className="animate-item scale-in">
+                    {/* Email and Call Options */}
+                    <div className="contact-options-grid animate-item fade-up delay-100 mb-12">
+                        <div className="contact-card hover-lift">
+                            <div className="contact-icon-wrapper">
+                                <Mail size={32} className="text-primary" />
+                            </div>
+                            <h3 className="contact-title">Email Us</h3>
+                            <p className="contact-desc">
+                                We’d love to hear from you. Drop a line any time with your thoughts or inquiries.
+                            </p>
+                            <a href="mailto:tpeoplecatalyst@gmail.com" className="contact-link">
+                                tpeoplecatalyst@gmail.com
+                            </a>
+                        </div>
+
+                        <div className="contact-card hover-lift delay-100">
+                            <div className="contact-icon-wrapper">
+                                <Phone size={32} className="text-primary" />
+                            </div>
+                            <h3 className="contact-title">Call Us</h3>
+                            <p className="contact-desc">
+                                Feel free to reach out directly. We’re here to listen and assist you.
+                            </p>
+                            <a href="tel:+919940020511" className="contact-link">
+                                +91 99400 20511
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Primary CTA - WhatsApp */}
+                    <div className="animate-item scale-in mb-8">
                         <a
                             href="https://wa.me/919940020511"
                             target="_blank"
@@ -26,10 +56,7 @@ const Contact = () => {
                         </a>
                     </div>
 
-
-
-
-                    <p className="reinforcement-line mt-6 animate-item fade-up delay-200" style={{ maxWidth: '600px', margin: '3rem auto 0' }}>
+                    <p className="reinforcement-line mt-12 animate-item fade-up delay-200" style={{ maxWidth: '600px', margin: '3rem auto 0' }}>
                         “No pressure—just a conversation to understand your needs.”
                     </p>
                 </div>
@@ -55,6 +82,54 @@ const Contact = () => {
                     color: hsl(var(--text-muted));
                     font-style: italic;
                     margin-top: 1.5rem;
+                }
+                .contact-options-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                    gap: 2rem;
+                    max-width: 900px;
+                    margin: 0 auto;
+                }
+                .contact-card {
+                    background: hsl(var(--surface));
+                    padding: 2.5rem;
+                    border-radius: 1rem;
+                    box-shadow: var(--shadow-sm);
+                    border: 1px solid hsl(var(--border));
+                    text-align: center;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+                .contact-card:hover {
+                    box-shadow: var(--shadow-md);
+                    border-color: hsl(var(--primary) / 0.3);
+                }
+                .contact-icon-wrapper {
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                }
+                .contact-title {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    margin-bottom: 1rem;
+                    color: hsl(var(--text-main));
+                }
+                .contact-desc {
+                    color: hsl(var(--text-muted));
+                    margin-bottom: 1.5rem;
+                    line-height: 1.6;
+                }
+                .contact-link {
+                    color: hsl(var(--primary));
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                    text-decoration: none;
+                }
+                .contact-link:hover {
+                    text-decoration: underline;
+                }
+                .contact-icon-wrapper svg {
+                    color: hsl(var(--primary));
                 }
             `}</style>
         </div>
