@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 const Founder = () => {
     return (
         <div className="page-container">
+
             <section className="section bg-surface text-center reveal">
                 <div className="container">
                     <h1 className="hero-title text-primary">Chief Catalyst’s Note</h1>
