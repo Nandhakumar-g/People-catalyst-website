@@ -42,13 +42,13 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    {/* Primary CTA - WhatsApp */}
-                    <div className="animate-item scale-in mb-8">
+                    {/* Primary CTA - WhatsApp - Dedicated Section */}
+                    <div className="whatsapp-cta-section animate-item scale-in mt-12 mb-8">
                         <a
                             href="https://wa.me/919940020511"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-primary"
+                            className="btn btn-primary hover-lift"
                             style={{ fontSize: '1.25rem', padding: '1rem 2rem' }}
                         >
                             <MessageCircle size={24} style={{ marginRight: '8px' }} />
