@@ -33,7 +33,7 @@ const Founder = () => {
                         </p>
 
                         <div className="signature animate-item fade-right delay-600">
-                            — Srinath Rangaraj, Founder
+                            — Srinath Rangaraj, Chief Catalyst
                         </div>
                     </div>
                 </div>
