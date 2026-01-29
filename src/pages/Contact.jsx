@@ -49,7 +49,7 @@ const Contact = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn btn-primary hover-lift"
-                            style={{ fontSize: '1.25rem', padding: '1rem 2rem' }}
+                            style={{ fontSize: '1.25rem', padding: '1rem 2rem', marginTop: '2rem' }}
                         >
                             <MessageCircle size={24} style={{ marginRight: '8px' }} />
                             Chat on WhatsApp
@@ -60,7 +60,7 @@ const Contact = () => {
                         “No pressure—just a conversation to understand your needs.”
                     </p>
                 </div>
-            </section>
+            </section >
 
 
 
@@ -132,7 +132,7 @@ const Contact = () => {
                     color: hsl(var(--primary));
                 }
             `}</style>
-        </div>
+        </div >
     );
 };
 
