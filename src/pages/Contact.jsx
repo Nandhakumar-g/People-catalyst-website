@@ -60,7 +60,7 @@ const Contact = () => {
                         “No pressure—just a conversation to understand your needs.”
                     </p>
                 </div>
-            </section >
+            </section>
 
 
 
@@ -132,7 +132,7 @@ const Contact = () => {
                     color: hsl(var(--primary));
                 }
             `}</style>
-        </div >
+        </div>
     );
 };
 
